@@ -1,9 +1,9 @@
 
 
 import de.bezier.guido.*;
-public final static int NUM_ROWS = 2;
-public final static int NUM_COLS = 2;
-public final static int numBombs = 4;
+public final static int NUM_ROWS = 3;
+public final static int NUM_COLS = 3;
+public final static int numBombs = 5;
 //public final static int numBombs = 69;
 //Declare and initialize NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
@@ -30,12 +30,14 @@ void setup ()
 }
 public void setBombs()
 {
-    for(int i = 0; i < numBombs; i++)
+    for(int i = 0; i < numBombs;)
     {
         int x = ((int)(Math.random()*NUM_ROWS));
         int y = ((int)(Math.random()*NUM_COLS));
         if(!bombs.contains(buttons[x][y])){
-        bombs.add(buttons[x][y]);}
+        bombs.add(buttons[x][y]);
+        i++;}
+        System.out.println(x + ", " + y);
     }
 }
 
