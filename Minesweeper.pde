@@ -54,7 +54,7 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
+    text("u suck", 200, 200);
 }
 public void displayWinningMessage()
 {
@@ -93,20 +93,23 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        if(keyPressed()==true)
-        {
-            marked = true;
-            if(marked == false)
+        if(mouseButton==RIGHT){
+            marked = !isMarked();
+            if(marked==false)
             {
                 clicked=false;
             }
         }
+        else if(bombs.contains(this)){
+            displayLosingMessage();
+        }
+        
     }
 
     public void draw () 
     {    
         if (marked)
-            fill(0);
+            fill(0,0,255);
         else if( clicked && bombs.contains(this) ) 
              fill(255,0,0);
         else if(clicked)
