@@ -103,6 +103,9 @@ public class MSButton
         else if(bombs.contains(this)){
             displayLosingMessage();
         }
+        else if(countBombs(r,c) > 0){
+            System.out.println((countBombs(r,c)));
+        }
         
     }
 
@@ -154,7 +157,7 @@ public class MSButton
         numBombs++;
         if(isValid(r+1,c+1)==true && bombs.contains(buttons[row+1][col+1]) == true)
         numBombs++;
-        System.out.println(numBombs);
+        //System.out.println(numBombs);
         return numBombs;
     }
 }
