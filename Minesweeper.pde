@@ -139,25 +139,19 @@ public class MSButton
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        if(isValid(r,c)==true && bombs.contains(buttons[row][col]) == true)
-        numBombs++;
-        if(isValid(r+1,c)==true && bombs.contains(buttons[row+1][col]) == true)
-        numBombs++;
-        if(isValid(r-1,c)==true && bombs.contains(buttons[row-1][col]) == true)
-        numBombs++;
-        if(isValid(r,c+1)==true && bombs.contains(buttons[row][col+1]) == true)
-        numBombs++;
-        if(isValid(r,c-1)==true && bombs.contains(buttons[row][col-1]) == true)
-        numBombs++;
-        if(isValid(r-1,c-1)==true && bombs.contains(buttons[row-1][col-1]) == true)
-        numBombs++;
-        if(isValid(r-1,c+1)==true && bombs.contains(buttons[row-1][col+1]) == true)
-        numBombs++;
-        if(isValid(r+1,c-1)==true && bombs.contains(buttons[row+1][col-1]) == true)
-        numBombs++;
-        if(isValid(r+1,c+1)==true && bombs.contains(buttons[row+1][col+1]) == true)
-        numBombs++;
-        //System.out.println(numBombs);
+        for(int i= -1; i<2; i++)
+        {
+            for(int j=-1;j<2; j++)
+            {
+                if(isValid(r+i,c+j)==true)
+                {
+                    if(bombs.contains(buttons[r+i][c+j]))
+                    {
+                        numBombs++;
+                    }
+                }
+            }
+        }
         return numBombs;
     }
 }
