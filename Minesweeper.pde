@@ -92,22 +92,24 @@ public class MSButton
     
     public void mousePressed () 
     {
+      if (mouseButton == LEFT && marked == false)
+      {
         clicked = true;
-        if(mouseButton==RIGHT){
-            marked = !isMarked();
-            if(marked==false)
-            {
-                clicked=false;
-            }
-        }
-        else if(bombs.contains(this)){
-            displayLosingMessage();
-        }
-        else if(countBombs(r,c) > 0){
-            System.out.println((countBombs(r,c)));
-        }
-        
-    }
+      }
+      if (mouseButton == RIGHT && clicked == false)
+      {
+        marked = !marked;
+      } 
+      else if (bombs.contains( this ) && marked == false)
+        displayLosingMessage();
+      else if (countBombs(r, c) > 0)
+        setLabel(str(countBombs(r, c)));
+      else
+        for (int i = -1; i <= 1; i++)
+          for (int j = -1; j <= 1; j++)
+            if ( (isValid(r+i, c+j)) && (!buttons[r+i][c+j].isClicked()) )
+              buttons[r+i][c+j].mousePressed();
+  }
 
     public void draw () 
     {    
@@ -155,6 +157,3 @@ public class MSButton
         return numBombs;
     }
 }
-
-
-
